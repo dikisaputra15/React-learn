@@ -4,12 +4,13 @@ import Navbar from 'react-bootstrap/Navbar';
 import Button from 'react-bootstrap/Button';
 import Container from 'react-bootstrap/Container';
 import Form from 'react-bootstrap/Form';
-import {BrowserRouter as Router,Switch,Route,Link,Routes} from "react-router-dom";
+import {BrowserRouter as Router,Switch,Route,Link,Routes,NavLink} from "react-router-dom";
 import App from './App';
 import About from './components/about';
 import Blog from './components/blog';
 import Contact from './components/contact';
 import Profile from './components/profile';
+import Writepost from './components/writepost';
 
 export default class header extends Component {
     render() {
@@ -18,7 +19,7 @@ export default class header extends Component {
             <div>
                 <Navbar bg="light" expand="lg">
                 <Container fluid>
-                    <Navbar.Brand><Link to="/">Easy Learning</Link></Navbar.Brand>
+                    <Navbar.Brand><NavLink style={({isActive})=>{return {color: isActive?'orange':''}}} to="/">Easy Learning</NavLink></Navbar.Brand>
                     <Navbar.Toggle aria-controls="navbarScroll" />
                     <Navbar.Collapse id="navbarScroll">
                     <Nav
@@ -26,10 +27,10 @@ export default class header extends Component {
                         style={{ maxHeight: '100px' }}
                         navbarScroll
                     >
-                        <Nav.Link><Link to="/about">About Us</Link></Nav.Link>
-                        <Nav.Link><Link to="/contact">Contact Us</Link></Nav.Link>
-                        <Nav.Link><Link to="/blog">Blog</Link></Nav.Link>
-                        <Nav.Link><Link to="/profile">Profile</Link></Nav.Link>
+                        <Nav.Link><NavLink style={({isActive})=>{return {color: isActive?'orange':''}}} to="/about">About Us</NavLink></Nav.Link>
+                        <Nav.Link><NavLink style={({isActive})=>{return {color: isActive?'orange':''}}} to="/contact">Contact Us</NavLink></Nav.Link>
+                        <Nav.Link><NavLink style={({isActive})=>{return {color: isActive?'orange':''}}} to="/blog">Blog</NavLink></Nav.Link>
+                        <Nav.Link><NavLink style={({isActive})=>{return {color: isActive?'orange':''}}} to="/profile">Profile</NavLink></Nav.Link>
                     
                     </Nav>
                     <Form className="d-flex">
@@ -47,6 +48,7 @@ export default class header extends Component {
             </div>
 
             <Routes>
+                <Route path="/writepost" element={<Writepost />} />
                 <Route path="/about" element={<About />} />
                 <Route path="/contact" element={<Contact />} />
                 <Route path="/blog" element={<Blog />} />
